@@ -1,0 +1,15 @@
+
+name: Webhook Trigger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send_webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Webhook
+        run: |
+          curl -X POST https://webhook.site/your-custom-url           -H "Content-Type: application/json"           -d '{"event": "push", "message": "Code pushed to main branch."}'
